@@ -2,8 +2,23 @@ const express = require('express');
 const app = express();
 const server = require('http').createServer(app);
 const io = require('socket.io')(server);
+const path = require('path'); // Tambahkan baris ini di atas
 
+// Hapus atau ganti baris app.use(express.static) lama dengan ini:
 app.use(express.static(__dirname));
+app.use(express.static(path.join(__dirname, 'public')));
+
+// Tambahkan rute penanganan manual ini tepat di bawahnya:
+app.get('/', (req, res) => {
+    // Kode ini akan otomatis mencari index.html baik di folder utama maupun di dalam folder public
+    res.sendFile(path.join(__dirname, 'index.html'), (err) => {
+        if (err) {
+            res.sendFile(path.join(__dirname, 'public', 'index.html'));
+        }
+    });
+});
+
+// ... (Sisa kode Socket.io ke bawah tetap sama seperti sebelumnya) ...
 
 // Data Room, Kursi, & Chat Sementara
 const rooms = {};
