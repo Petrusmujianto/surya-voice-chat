@@ -7,32 +7,39 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Box Login Sederhana -->
+    <!-- Halaman Lobby Utama / Form Login -->
     <div id="setup-box">
         <h2>Surya VoiceChat</h2>
-        <p>Masuk ke ruang obrolan audio</p>
+        <p>Masuk atau buat room baru</p>
         <input type="text" id="username-input" placeholder="Nama Panggilan Anda...">
-        <input type="text" id="room-input" placeholder="Nama Room (Contoh: Santai, Musik)...">
-        <button onclick="joinChatroom()">Masuk Room</button>
+        <input type="text" id="room-input" placeholder="Buat Nama Room Baru...">
+        <button onclick="joinChatroom()">Buat & Masuk Room</button>
+
+        <hr style="border: 1px solid #251f4f; margin: 20px 0;">
+
+        <h3>🔥 Room Yang Sedang Aktif</h3>
+        <div id="lobby-room-list">
+            <p style="color: #888; font-size: 13px;">Belum ada room aktif. Jadilah yang pertama membuat room!</p>
+        </div>
     </div>
 
-    <!-- Tampilan Utama Room -->
+    <!-- Halaman Tampilan Dalam Chatroom -->
     <div id="room-box" style="display: none;">
         <h2 id="room-title">Surya VoiceChat Room</h2>
         
-        <!-- Grid 8 Kursi Mic Pembicara -->
+        <!-- Grid 8 Kursi Mic Pembicara ala YoYo/Hiya -->
         <div class="seats-grid" id="seats-container"></div>
 
         <div class="controls">
             <button id="btn-leave-seat" onclick="leaveSeat()" style="display:none;">Turun dari Mic</button>
         </div>
 
-        <!-- Bagian Live Chat & Penonton -->
+        <!-- Area Live Chat Box teks -->
         <div class="chat-section">
             <h3>Live Chat (<span id="audience-count">0</span> Penonton)</h3>
             <div id="chat-messages"></div>
             <div class="chat-input-box">
-                <input type="text" id="chat-input" placeholder="Ketik sesuatu...">
+                <input type="text" id="chat-input" placeholder="Ketik pesan...">
                 <button onclick="sendChatMessage()">Kirim</button>
             </div>
         </div>
