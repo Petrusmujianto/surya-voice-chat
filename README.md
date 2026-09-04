@@ -1,2 +1,2 @@
-# surya-voice-chat
+# Surya-Voice-Chat
 Project 1
