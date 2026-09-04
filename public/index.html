@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Surya VoiceChat</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- Box Login Sederhana -->
+    <div id="setup-box">
+        <h2>Surya VoiceChat</h2>
+        <p>Masuk ke ruang obrolan audio</p>
+        <input type="text" id="username-input" placeholder="Nama Panggilan Anda...">
+        <input type="text" id="room-input" placeholder="Nama Room (Contoh: Santai, Musik)...">
+        <button onclick="joinChatroom()">Masuk Room</button>
+    </div>
+
+    <!-- Tampilan Utama Room -->
+    <div id="room-box" style="display: none;">
+        <h2 id="room-title">Surya VoiceChat Room</h2>
+        
+        <!-- Grid 8 Kursi Mic Pembicara -->
+        <div class="seats-grid" id="seats-container"></div>
+
+        <div class="controls">
+            <button id="btn-leave-seat" onclick="leaveSeat()" style="display:none;">Turun dari Mic</button>
+        </div>
+
+        <!-- Bagian Live Chat & Penonton -->
+        <div class="chat-section">
+            <h3>Live Chat (<span id="audience-count">0</span> Penonton)</h3>
+            <div id="chat-messages"></div>
+            <div class="chat-input-box">
+                <input type="text" id="chat-input" placeholder="Ketik sesuatu...">
+                <button onclick="sendChatMessage()">Kirim</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="audio-streams"></div>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script src="script.js"></script>
+</body>
+</html>
